@@ -1,3 +1,3 @@
 # Calendar
 
-Adaptation de l'application calendrier coée par PortEXE. 
+Adaptation de l'application calendrier codée par PortEXE. 
