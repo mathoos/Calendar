@@ -1,0 +1,308 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #95d6cf;
+}
+@font-face {
+    font-family: 'melody_southernscript';
+    src: url('./font/melodysouthern-script-webfont.woff2') format('woff2'),
+         url('./font/melodysouthern-script-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* BOUTONS POUR ALLER D'UN MOIS A UN AUTRE */
+
+#backButton, #nextButton{
+    font-size: 3em;
+    font-weight: bolder;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+#backButton{
+    transform: rotate(180deg);
+    margin-right: 2%;
+    color: #eb9868;
+}
+#nextButton{
+    color: #eb9868;
+    margin-left: 2%;
+}
+
+/* CALENDRIER */
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40%;
+    height: 90%;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #F2DDCC
+}
+
+/* Haut du calendrier : mois et année */ 
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    margin-bottom: 2%;
+    background-color: #eb9868
+}
+#monthDisplay{
+    font-family: 'melody_southernscript';
+    font-weight: bold;
+    font-size: 3em;
+    color: #F2DDCC
+}
+
+/* Les jours de la semaine */ 
+
+#weekdays {
+    display: flex;
+    width: 90%;
+    height: 5%;
+    margin-bottom: 2%;
+}
+#weekdays div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12%;
+    overflow: hidden;
+    word-break: break-word;
+    margin-right: 2.666%; /*   résultat de cette opération => (100 - (12 * 7)) / 6   */   
+    color: #E9AE8C;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: 'Calibri';
+}
+#weekdays div:last-child{
+    margin-right: 0;
+}
+
+/* Les cases du calendrier */
+
+#calendar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 90%;
+    height: 70%;
+}
+.day {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2.666%; /*   résultat de cette opération => (100 - (12 * 7)) / 6   */   
+    width: 12%; 
+    min-height: calc(100% / 6.5);
+    max-height: calc(100% / 6.5);
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: white;
+    font-family: 'Calibri';
+    color: #E9AE8C;
+    overflow: hidden;
+}
+.up{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: fit-content;
+    height: fit-content;
+
+}
+.event {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 80%;
+    word-break: break-all;
+    color: #95d6cf;
+    font-weight: bolder;
+    border-radius: 53% 47% 54% 46% / 52% 34% 66% 48% ;
+    padding: 5%;
+    border-left: 2px solid #95d6cf;
+    border-bottom: 2px solid #95d6cf;
+    border-top: 1px solid #95d6cf;
+    line-height: 1em;
+    margin-top: 15%;
+
+}
+.day:nth-child(7n){
+    margin-right: 0;
+}
+
+.day:hover {
+    background-color: #95d6cf;
+}
+  
+/* Le jour actuel */
+
+.day + #currentDay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #95d6cf;
+    color: #f5e7da
+}
+
+.actu{
+    width: 80%;
+    height: 80%;
+    animation: rotate 10s linear infinite;  
+}
+.actu img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes rotate{
+    to{
+        transform: rotate(360deg)
+    }
+}
+
+/* Les jours qui ne font pas parti du mois */
+
+
+.padding {
+  cursor: default;
+  background: rgba(255, 246, 240, 0.7);
+ 
+}
+.padding:hover{
+    background-color: rgba(255, 246, 240, 0.7);
+}
+
+
+/* Evenment */
+
+
+#newEventModal, #deleteEventModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    width: 30%;
+    height: 40%;
+    z-index: 20;
+    background-color: #f0d0be;
+    border-radius: 20px;
+    overflow: hidden;
+
+}
+.prout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;;
+}
+#newEventModal h2, #deleteEventModal h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Calibri';
+    font-weight: bold;
+    font-size: 2em;
+    letter-spacing: 1px;
+    color: #F2DDCC;
+    width: 100%;
+    height: 20%;
+    margin: 0;
+    background-color: #eb9868;
+    margin-bottom: 10%;
+}
+#eventTitleInput {
+    width: 70%;
+    height: 20%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    margin-bottom: 5%;
+    box-shadow: 0px 0px 3px gray;
+    padding-left: 5%;
+    font-size: 1.2em;
+}
+.boutons{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    height: 15%;
+}
+#saveButton, #cancelButton, #deleteButton, #closeButton {
+    width: 40%;
+    border: none; 
+    outline: none;
+    border-radius: 15px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+#saveButton, #closeButton{
+    background-color: #eb9868;
+    color:  #F2DDCC;
+}
+#cancelButton, #deleteButton{
+    background-color: #F2DDCC;
+    color: #eb9868;
+    border: .5px solid #eb9868;
+}
+
+#eventTitleInput.error {
+    width: 70%;
+    border: 2px solid rgb(255, 103, 16);
+}
+
+#eventText {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 20%;
+    box-sizing: border-box;
+    padding-left: 5%;
+    margin-bottom: 5%;
+    font-size: 1.2em;
+    font-family: 'Calibri';
+    background-color: #F1F1F1
+}
+#modalBackDrop {
+    display: none;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
