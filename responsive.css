@@ -1,0 +1,64 @@
+#backButton, #nextButton{
+    display: none;
+}
+#container{
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+}
+#header {
+    width: 100%;
+    height: 15%;
+    border-radius: 0 0 30px 30px;
+}
+#monthDisplay{
+    font-size: 2.5em;
+}
+#weekdays {
+    width: 95%;
+    margin-bottom: 8%;
+    font-size: .8em;
+}
+#calendar {
+    width: 95%;
+}
+.day {
+    border-radius: 10px;
+}
+.actu{
+    width: 90%;
+    height: 90%;
+}
+.event {
+    font-size: .8em;
+    width: 90%;
+}
+#newEventModal, #deleteEventModal {
+    width: 90%;
+    height: 30%;
+}
+#newEventModal h2, #deleteEventModal h2{
+    font-size: 1.5em;
+    margin-bottom: 10%;
+}
+#eventTitleInput{
+    height: 20%;
+    margin-bottom: 10%;
+    font-size: 1em;
+}
+#saveButton, #cancelButton, #deleteButton, #closeButton {
+    border-radius: 10px;
+    font-size: .7em;
+}
+
+
+#modalBackDrop {
+    display: none;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+}
