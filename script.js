@@ -65,11 +65,8 @@ function load() {
     `
 
     if (i - paddingDays === day && nav === 0) {
-    daySquare.id = 'currentDay';
-    daySquare.innerHTML = `
-    <div class="actu">
-        <img src="./images/sun.png">
-    </div>`
+    daySquare.id = 'currentDay'; 
+    
     }
 
     if (eventForDay) {
